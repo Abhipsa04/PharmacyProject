@@ -15,6 +15,8 @@ if(sds == null){alert("You are using a free package.\n You are not allowed to re
 }
 </script>
 
+
+<head>
 <SCRIPT LANGUAGE="JavaScript">
 function dil(form)
 {
@@ -23,48 +25,69 @@ function dil(form)
 		if(form.elements[i].value == "")
 		{
 		   alert("Fill out all Fields")
-		   document.F1.accountno.focus()
+		   document.F1.productname.focus()
 		   return false
 		}
    }
-
-   if(isNaN(document.F1.accountno.value))
+ if(!isNaN(document.F1.productname.value))
    {
-       alert("Accountno must  be  number & can't be null")
-	   document.F1.accountno.value=""
-	   document.F1.accountno.focus()
+       alert("productname  must  be  char's & can't be null")
+	   document.F1.productname.value=""
+	   document.F1.productname.focus()
 	   return false
    }
-   if(!isNaN(document.F1.username.value))
+  
+  
+	
+	 if(isNaN(document.F1.tax.value))
    {
-       alert("User Name  must  be  char's & can't be null")
-	   document.F1.username.value=""
-	   document.F1.username.focus()
+       alert("tax field must  be  number & can't be null")
+	   document.F1.tax.value=""
+	   document.F1.tax.focus()
 	   return false
    }
-
-   if(!isNaN(document.F1.password.value))
+  
+    if(isNaN(document.F1.minq.value))
    {
-       alert("Password  must  be  char's & can't be null")
-	   document.F1.password.value=""
-	   document.F1.password.focus()
+       alert("min quanty of order field must  be  number & can't be null")
+	   document.F1.minq.value=""
+	   document.F1.minq.focus()
+	   return false
+   }
+    if(isNaN(document.F1.orderq.value))
+   {
+       alert("Ordering Qty field must  be  number & can't be null")
+	   document.F1.orderq.value=""
+	   document.F1.orderq.focus()
+	   return false
+   }
+    if(isNaN(document.F1.discount.value))
+   {
+       alert("discount field must  be  number & can't be null")
+	   document.F1.discount.value=""
+	   document.F1.discount.focus()
+	   return false
+   }
+    if(isNaN(document.F1.netcost.value))
+   {
+       alert("Netcost field must  be  number & can't be null")
+	   document.F1.netcost.value=""
+	   document.F1.netcost.focus()
+	   return false
+   }
+    if(isNaN(document.F1.amount.value))
+   {
+       alert("tax field must  be  number & can't be null")
+	   document.F1.amount.value=""
+	   document.F1.amount.focus()
 	   return false
    }
    
-   return true   
-}
-</SCRIPT>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Global Banking ..</title>
-<link href="style.css" rel="stylesheet" type="text/css">
-<script type="text/javascript">
-function ctck()
-{
-var sds = document.getElementById("dum");
+   
 
-}
-</script>
-<body>
+   return true   
+   }
+</SCRIPT>
 <div id="header">
 	<div id="navigation">
     	<ul>
@@ -85,59 +108,54 @@ var sds = document.getElementById("dum");
       	<p>Freedesignertemplates.com has a wide collection of HTML web design templates.</p>
     	<p align="right"><a href="#" class="more">View More</a></p>
     </td> <td valign="top">
-    	
+			
+				<form name=F1 onSubmit="return dil(this)" action="orderdetail.jsp" >
+				  <table cellspacing="5" cellpadding="3">	
+				  <TR>
+	<TD> Product Code : </TD> <TD> <SELECT NAME="ProdCode"> 
+									<option value=a1> APLG0001
+									<option value=a2> APLG0002
+									<option value=a3> APLG0003
+									<option value=a4> APLG0004
+									<option value=a5> APLG0005
+
+									
+									</SELECT> 
+							  </TD>
 	
-    	<% 
-%>
-<table width="300" border="0" cellspacing="10" cellpadding="0" align="center"><%
-       
-        String username=request.getParameter("username");
-		String password=request.getParameter("password");
-	    boolean status=verifyLogin3.checkLogin(username,password);
-		
-		try {
-		if(status==true){
-			out.print("Welcome    " + username);
-		
-			out.println("<br><br><a href='distributerorder.jsp'>Click to see orders</a> " );
-			out.println("<br><br><a href='distributerproduct.jsp'>Click to add Products</a> " );
-
-			Connection con=GetCon.getCon();
-			PreparedStatement ps=con.prepareStatement("");
-           			
-		}
-		else{
-			out.print("Please check your username and Password");
-			request.setAttribute("distributer","Please check your username and Password");
-			%>
-			<jsp:forward page="distributerlogin.jsp"></jsp:forward> 
-			<% 
-			}
-		 }catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		
-			%></table><%
-%>
-    	
- 
-
-
-<%@ page import="java.sql.*"%>
-<%@ page import="java.io.*" %>
-<%@ page import="javax.servlet.*"%>
-<%@ page import="com.kingbomm.*" %>
-  
+</TR>
 				
-		 <td valign="top">
+					<tr><td>Product Name :</td><td> <input type="text" name="productname"/></td></tr>
+					<tr><td>Tax :</td><td> <input type="text" name="tax"/></td></tr>
+					<tr><td>Min Qty to Order :	</td><td> <input type="text" name="minq"/></td></tr>
+					<tr><td>Ordering Qty :</td><td> <input type="text" name="orderq"/></td></tr>
+					
+					
+					<tr><td>Discount :</td><td> <input type="text" name="discount"/></td></tr>
+					<tr><td>Net cost:</td><td> <input type="text" name="netcost"/></td></tr>
+					<tr><td>Amount:</td><td> <input type="text" name="amount"/></td></tr>
+					
+
+	
+					<tr><td></td><td><input type="submit" value="Submit"/>
+					
+					<INPUT TYPE=RESET VALUE="CLEAR"></td></tr>
+					</table>
+               		</form>
+				
+    	
+    <td valign="top">
     	<img src="images/hioxindia-pharmacy_10.jpg" alt="" border="0" />
         <h1>Drug Store</h1>
       <p>Anyone can use these HTML templates just by replacing the content to the pre-existing site designs.</p>
         <p align="right"><a href="#" class="more">View More</a></p>
     </td>
-   		
-
+    <td valign="top">
+    	<img src="images/hioxindia-pharmacy_12.jpg" alt="" border="0" />
+        <h1>Tablets</h1>
+      <p>This high quality free pharmaceutical company template is built using XHTML and CSS..</p>
+        <p align="right"><a href="#" class="more">View More</a></p>
+    </td>
     
   </tr>
   <tr><td colspan="4" style="border-bottom:1px solid #CCCCCC;"></td></tr>
@@ -176,4 +194,3 @@ var sds = document.getElementById("dum");
 </div>
 </body>
 </html>
-
