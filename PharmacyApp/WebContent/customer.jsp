@@ -65,6 +65,7 @@ var sds = document.getElementById("dum");
         	<li><a href="index.jsp">Home</a></li>
             <li><a href="about.jsp">About Us</a></li>
             <li><a href="admin.jsp">ADMINISTRATOR </a></li>
+            <li><a href="distributerlogin.jsp">DISTRIBUTER </a></li>
             <li><a href="customer.jsp">CUST0MER</a></li>
             <li><a href="contactus.jsp">Contact Us</a></li>
         </ul>	
