@@ -75,7 +75,7 @@ var sds = document.getElementById("dum");
     <td valign="top" width="220px">
     	<img src="images/hioxindia-pharmacy_08.jpg" alt="" border="0" /> <br /> 
       <h1>Pharmaceutist</h1>
-      	<p>Freedesignertemplates.com has a wide collection of HTML web design templates.</p>
+      	<p>Book a call for tele-consultancy now.(Coming up)</p>
     	<p align="right"><a href="#" class="more">View More</a></p>
     </td> <td valign="top">
    		   
@@ -110,8 +110,8 @@ var sds = document.getElementById("dum");
 		
     <td valign="top">
     	<img src="images/hioxindia-pharmacy_10.jpg" alt="" border="0" />
-        <h1>Drug Store</h1>
-      <p>Anyone can use these HTML templates just by replacing the content to the pre-existing site designs.</p>
+        <h1>Tele-Consultancy</h1>
+      	<p>Book a call for tele-consultancy now.(Coming up)</p>
         <p align="right"><a href="#" class="more">View More</a></p>
     </td>
     <td valign="top">
