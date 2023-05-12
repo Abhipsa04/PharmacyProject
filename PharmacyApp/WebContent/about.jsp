@@ -61,7 +61,7 @@
 		<hr>
 			<center>
 				<table cellspacing="10" cellpadding="8"
-					style="color: blue; border: 2px solid teal; font-family: serif; font-weight:bold;">
+					style="color: Blue; border: 2px solid teal; font-family: serif; font-weight:bold;">
 
 					<tr>
 						<td>OUR PHONE NUMBER:</td>
