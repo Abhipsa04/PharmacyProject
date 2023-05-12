@@ -89,8 +89,8 @@ function dil(form)
   <tr align="justify">
     <td valign="top" width="220px">
     	<img src="images/hioxindia-pharmacy_08.jpg" alt="" border="0" /> <br /> 
-      <h1>Pharmaceutist</h1>
-      	<p>Freedesignertemplates.com has a wide collection of HTML web design templates.</p>
+      <h1>Tele-Consultancy</h1>
+      	<p>Book a call for tele-consultancy now.(Coming up)</p>
     	<p align="right"><a href="#" class="more">View More</a></p>
     </td> <td valign="top">
 			
@@ -134,14 +134,14 @@ function dil(form)
     	
     <td valign="top">
     	<img src="images/hioxindia-pharmacy_10.jpg" alt="" border="0" />
-        <h1>Drug Store</h1>
-      <p>Anyone can use these HTML templates just by replacing the content to the pre-existing site designs.</p>
+        <h1>Blood Test</h1>
+      <p>Get your blood tested at your doorstep.(Coming soon)</p>
         <p align="right"><a href="#" class="more">View More</a></p>
     </td>
     <td valign="top">
     	<img src="images/hioxindia-pharmacy_12.jpg" alt="" border="0" />
-        <h1>Tablets</h1>
-      <p>This high quality free pharmaceutical company template is built using XHTML and CSS..</p>
+        <h1>Eye Checkup</h1>
+      <p>Get your eyesights checked at the comfort of your house.(Coming soon)</p>
         <p align="right"><a href="#" class="more">View More</a></p>
     </td>
     
@@ -156,10 +156,9 @@ function dil(form)
     <td width="200" valign="top">
     	<img src="images/hioxindia-pharmacy_19.jpg" alt="" border="0" />    </td>
     <td width="760" valign="top">
-    	<h1>Welcome to Pharmaceutical Company Template</h1>
-        <p>This is free Pharmaceutical Company Template for your online website, blog or web page which is under Health and Medicine category. Anyone wants good, professional, template for their pharmacy, drug store, medical store then this template would be the best one. This free pharmaceutical company template is designed by professional designers to make your task much easier to customize it.</p><br />
-
-<p>There are many other template categories like Arts, Agriculture, Computers, Satellite, Cars, Finance, Nature, Music, Personal Website, Religious, Fashion, Furniture, Holiday, Travel, Night club are available in this site. Have a look at the collection of HTML templates, pick the right one, preview and download it easily.</p>
+    	<h1>Welcome to JustMedi Pharmaceutical Platform </h1>
+        
+		<p>Welcome to JustMedi, your ultimate destination for all your pharmaceutical needs! At JustMedi, we understand the importance of convenient access to high-quality medications and healthcare products. Our user-friendly online pharmacy platform offers a wide range of medications, supplements, personal care items, and much more, all delivered right to your doorstep. Whether you're looking for prescription medications or over-the-counter remedies, we've got you covered. With a team of experienced pharmacists, stringent quality control measures, and a commitment to exceptional customer service, we strive to ensure your health and well-being are our top priorities. Say goodbye to long queues and tedious searches; let JustMedi be your trusted companion on your journey to wellness. Explore our extensive product selection, enjoy competitive prices, and experience the convenience of a pharmacy at your fingertips. Welcome to a healthier, happier you with JustMedi!</p>
     </td>
   </tr>
 </table>

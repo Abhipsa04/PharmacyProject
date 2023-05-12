@@ -78,7 +78,7 @@ if(sds == null){alert("You are using a free package.\n You are not allowed to re
     <td width="200" valign="top">
     	<img src="images/hioxindia-pharmacy_19.jpg" alt="" border="0" />    </td>
     <td width="760" valign="top">
-    	<h1>Welcome to Pharmaceutical Company </h1>
+    	<h1>Welcome to JustMedi Pharmaceutical Platform </h1>
         
 		<p>Welcome to JustMedi, your ultimate destination for all your pharmaceutical needs! At JustMedi, we understand the importance of convenient access to high-quality medications and healthcare products. Our user-friendly online pharmacy platform offers a wide range of medications, supplements, personal care items, and much more, all delivered right to your doorstep. Whether you're looking for prescription medications or over-the-counter remedies, we've got you covered. With a team of experienced pharmacists, stringent quality control measures, and a commitment to exceptional customer service, we strive to ensure your health and well-being are our top priorities. Say goodbye to long queues and tedious searches; let JustMedi be your trusted companion on your journey to wellness. Explore our extensive product selection, enjoy competitive prices, and experience the convenience of a pharmacy at your fingertips. Welcome to a healthier, happier you with JustMedi!</p>
     </td>

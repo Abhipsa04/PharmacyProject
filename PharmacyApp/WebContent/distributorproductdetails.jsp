@@ -15,6 +15,8 @@ if(sds == null){alert("You are using a free package.\n You are not allowed to re
 }
 </script>
 
+
+<head>
 <SCRIPT LANGUAGE="JavaScript">
 function dil(form)
 {
@@ -23,92 +25,156 @@ function dil(form)
 		if(form.elements[i].value == "")
 		{
 		   alert("Fill out all Fields")
-		   document.F1.username.focus()
+		   document.F1.productname.focus()
 		   return false
 		}
    }
-
-  
-   if(!isNaN(document.F1.username.value))
+ if(!isNaN(document.F1.productname.value))
    {
-       alert("User Name  must  be  char's & can't be null")
-	   document.F1.username.value=""
-	   document.F1.username.focus()
+       alert("productname  must  be  char's & can't be null")
+	   document.F1.productname.value=""
+	   document.F1.productname.focus()
 	   return false
    }
 
-   if(!isNaN(document.F1.password.value))
+  
+    if(isNaN(document.F1.minq.value))
    {
-       alert("Password  must  be  char's & can't be null")
-	   document.F1.password.value=""
-	   document.F1.password.focus()
+       alert("min quanty of order field must  be  number & can't be null")
+	   document.F1.minq.value=""
+	   document.F1.minq.focus()
+	   return false
+   }
+    if(isNaN(document.F1.orderq.value))
+   {
+       alert("Ordering Qty field must  be  number & can't be null")
+	   document.F1.orderq.value=""
+	   document.F1.orderq.focus()
+	   return false
+   }
+
+    if(isNaN(document.F1.netcost.value))
+   {
+       alert("Netcost field must  be  number & can't be null")
+	   document.F1.netcost.value=""
+	   document.F1.netcost.focus()
+	   return false
+   }
+    if(!isNaN(document.F1.usname.value))
+   {
+       alert("username field must  be character & can't be null")
+	   document.F1.usname.value=""
+	   document.F1.usname.focus()
 	   return false
    }
    
-   return true   
-}
-</SCRIPT>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Global Banking ..</title>
-<link href="style.css" rel="stylesheet" type="text/css">
-<script type="text/javascript">
-function ctck()
-{
-var sds = document.getElementById("dum");
+   
 
-}
-</script>
-<body>
+   return true   
+   }
+</SCRIPT>
 <div id="header">
 	<div id="navigation">
     	<ul>
         	<li><a href="index.jsp">Home</a></li>
             <li><a href="about.jsp">About Us</a></li>
             <li><a href="admin.jsp">ADMINISTRATOR </a></li>
-            <li><a href="distributer.jsp">DISTRIBUTER </a></li>
             <li><a href="customer.jsp">CUST0MER</a></li>
             <li><a href="contactus.jsp">Contact Us</a></li>
         </ul>	
     </div>
 </div>
 
-<table width="960" border="0" cellspacing="10" cellpadding="0" align="center">
+ <table width="960" border="0" cellspacing="10" cellpadding="0" align="center">
   <tr align="justify">
-    <td valign="top" width="220px">
+     <td valign="top" width="220px">
     	<img src="images/hioxindia-pharmacy_08.jpg" alt="" border="0" /> <br /> 
       <h1>Tele-Consultancy</h1>
       	<p>Book a call for tele-consultancy now.(Coming up)</p>
     	<p align="right"><a href="#" class="more">View More</a></p>
     </td> <td valign="top">
-   			   
-				  <%  out.print("<font color=red>WELCOME TO DISTRIBUTER LOGIN");
-	%>
-    
-    	<form name=F1 onSubmit="return dil(this)" action="distributer.jsp" >
-				   <table cellspacing="10" cellpadding="8">	
-				  <%if(request.getAttribute("distributer")!=null)
-			{
-			out.print("<div>");
-			out.print("<font color='blue'><font size='4'>"+request.getAttribute("distributer"));
+    	
+				
+    	<% 
+%>
+<table width="300" border="0" cellspacing="10" cellpadding="0" align="center"><%
+        
+        String ProdCode=request.getParameter("ProdCode");
+        String productname=request.getParameter("productname");
+        String mfg = request.getParameter("mfg");
+        String mfd = request.getParameter("mfd");
+        String exp = request.getParameter("exp");
+   
+        
+        String min=request.getParameter("minq");
+        double minq=Double.parseDouble(min);
+        
+        String order=request.getParameter("orderq");  
+        double totalq=Double.parseDouble(order);
+        
+        
+        String nst=request.getParameter("netcost");
+        double totalcost=Double.parseDouble(nst);
+        
+
+	    
+	    String username=request.getParameter("usname");
+	    
+		try 
+		{
+		    Connection con=GetCon.getCon();
+			PreparedStatement ps=con.prepareStatement("insert into DISTRIBUTERPROD values(?,?,?,?,?,?,?,?,?,?)");
+			         int nextvalue=GetCon.getPrimaryKey();
+	 	             ps.setInt(1,nextvalue);
+	 	           // ps.setInt(1,8);
+           			ps.setString(2,ProdCode);
+           			ps.setString(3,productname);
+           			ps.setString(4,mfg);
+           			ps.setString(5,mfd);
+           			ps.setString(6,exp);
+           			ps.setDouble(7,minq);
+           			ps.setDouble(8,totalq);
+           			ps.setDouble(9,totalcost);
+           			ps.setString(10,username);
+           			ResultSet rs=ps.executeQuery();
+           			//out.print("<tr>your Item has been Added </tr>");
+        			
+           		    
+           			if(rs.next()){
+           			
+			out.print("your Item has been Added");
+			//out.println("<br><a href='distributer.jsp'> Go To add products </a><br>");
+
 			
-			out.print("</div>"); 
+			%></table>	
+			
+			
+			<% 
+				
 			}
+           			
+		   else{
+		  
+			out.print("sorry try later");
 			
-			 %>
-				 
-	    			<tr><td>LOGIN NAME:</td><td> <input type="text" name="username"/></td></tr>
-					
-					<tr><td>PASSWORD:</td><td> <input type="password" name="password"/></td></tr>
-					
-					<tr><td></td><td><input type="submit" value="Submit"/>
-					
-                   
-                   <INPUT TYPE=RESET VALUE="CLEAR"></td></tr>
-                   
-             	</table>
-				</form>
-  		
+			%>
+			<jsp:forward page="index.php"></jsp:forward> 
+			<% 
 			
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+		%></table><%
+%>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*" %>
+<%@ page import="javax.servlet.*"%>
+<%@ page import="com.kingbomm.*" %>
+  
+						
 		
     <td valign="top">
     	<img src="images/hioxindia-pharmacy_10.jpg" alt="" border="0" />
@@ -159,4 +225,3 @@ var sds = document.getElementById("dum");
 </div>
 </body>
 </html>
-
