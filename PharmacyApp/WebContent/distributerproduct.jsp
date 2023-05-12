@@ -36,16 +36,7 @@ function dil(form)
 	   document.F1.productname.focus()
 	   return false
    }
-  
-  
-	
-	 if(isNaN(document.F1.tax.value))
-   {
-       alert("tax field must  be  number & can't be null")
-	   document.F1.tax.value=""
-	   document.F1.tax.focus()
-	   return false
-   }
+
   
     if(isNaN(document.F1.minq.value))
    {
@@ -61,13 +52,7 @@ function dil(form)
 	   document.F1.orderq.focus()
 	   return false
    }
-    if(isNaN(document.F1.discount.value))
-   {
-       alert("discount field must  be  number & can't be null")
-	   document.F1.discount.value=""
-	   document.F1.discount.focus()
-	   return false
-   }
+
     if(isNaN(document.F1.netcost.value))
    {
        alert("Netcost field must  be  number & can't be null")
@@ -75,11 +60,11 @@ function dil(form)
 	   document.F1.netcost.focus()
 	   return false
    }
-    if(isNaN(document.F1.amount.value))
+    if(!isNaN(document.F1.usname.value))
    {
-       alert("tax field must  be  number & can't be null")
-	   document.F1.amount.value=""
-	   document.F1.amount.focus()
+       alert("username field must  be character & can't be null")
+	   document.F1.usname.value=""
+	   document.F1.usname.focus()
 	   return false
    }
    
@@ -109,7 +94,7 @@ function dil(form)
     	<p align="right"><a href="#" class="more">View More</a></p>
     </td> <td valign="top">
 			
-				<form name=F1 onSubmit="return dil(this)" action="orderdetail.jsp" >
+				<form name=F1 onSubmit="return dil(this)" action="distributorproductdetails.jsp" >
 				  <table cellspacing="5" cellpadding="3">	
 				  <TR>
 	<TD> Product Code : </TD> <TD> <SELECT NAME="ProdCode"> 
@@ -126,14 +111,16 @@ function dil(form)
 </TR>
 				
 					<tr><td>Product Name :</td><td> <input type="text" name="productname"/></td></tr>
-					<tr><td>Tax :</td><td> <input type="text" name="tax"/></td></tr>
+					<tr><td>Manufacturing date: </td><td> <input type="text" name="mfg"/></td></tr>
+					<tr><td>Manufacturer details: </td><td> <input type="text" name="mfd"/></td></tr>
+					
+					<tr><td>Expiry Date :</td><td> <input type="text" name="exp"/></td></tr>
 					<tr><td>Min Qty to Order :	</td><td> <input type="text" name="minq"/></td></tr>
-					<tr><td>Ordering Qty :</td><td> <input type="text" name="orderq"/></td></tr>
+					<tr><td>Total Qty :</td><td> <input type="text" name="orderq"/></td></tr>
 					
 					
-					<tr><td>Discount :</td><td> <input type="text" name="discount"/></td></tr>
-					<tr><td>Net cost:</td><td> <input type="text" name="netcost"/></td></tr>
-					<tr><td>Amount:</td><td> <input type="text" name="amount"/></td></tr>
+					<tr><td>Cost/product:</td><td> <input type="text" name="netcost"/></td></tr>
+					<tr><td>Username</td><td> <input type="text" name="usname"/></td></tr>
 					
 
 	
@@ -142,6 +129,7 @@ function dil(form)
 					<INPUT TYPE=RESET VALUE="CLEAR"></td></tr>
 					</table>
                		</form>
+               		
 				
     	
     <td valign="top">

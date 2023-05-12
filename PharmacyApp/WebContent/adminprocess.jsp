@@ -99,6 +99,9 @@ var sds = document.getElementById("dum");
 		    //out.print("<table>");
 			out.println("<br><br><a href='customeradmin.jsp'> Go To customer Administration </a><br>");
 			out.println("<br><a href='ordersadmin.jsp'> Go To Orders Administration </a><br>");
+			out.println("<br><a href='productslist.jsp'> Go To see all products </a><br>");
+
+			
 		   // out.print("</table>");
 			
 			Connection con=GetCon.getCon();

@@ -101,6 +101,8 @@ var sds = document.getElementById("dum");
 		
 			out.println("<br><br><a href='distributerorder.jsp'>Click to see orders</a> " );
 			out.println("<br><br><a href='distributerproduct.jsp'>Click to add Products</a> " );
+			out.println("<br><br><a href='getusername.jsp'>Click to See ur Products</a> " );
+			
 
 			Connection con=GetCon.getCon();
 			PreparedStatement ps=con.prepareStatement("");
