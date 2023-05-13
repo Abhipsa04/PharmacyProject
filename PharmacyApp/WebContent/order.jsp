@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,53 +35,15 @@ function dil(form)
 	   document.F1.productname.focus()
 	   return false
    }
-  
-  
-	
-	 if(isNaN(document.F1.tax.value))
-   {
-       alert("tax field must  be  number & can't be null")
-	   document.F1.tax.value=""
-	   document.F1.tax.focus()
-	   return false
-   }
-  
-    if(isNaN(document.F1.minq.value))
-   {
-       alert("min quanty of order field must  be  number & can't be null")
-	   document.F1.minq.value=""
-	   document.F1.minq.focus()
-	   return false
-   }
-    if(isNaN(document.F1.orderq.value))
-   {
-       alert("Ordering Qty field must  be  number & can't be null")
-	   document.F1.orderq.value=""
-	   document.F1.orderq.focus()
-	   return false
-   }
-    if(isNaN(document.F1.discount.value))
-   {
-       alert("discount field must  be  number & can't be null")
-	   document.F1.discount.value=""
-	   document.F1.discount.focus()
-	   return false
-   }
-    if(isNaN(document.F1.netcost.value))
+
+    if(isNaN(document.F1.noOfUnits.value))
    {
        alert("Netcost field must  be  number & can't be null")
-	   document.F1.netcost.value=""
-	   document.F1.netcost.focus()
+	   document.F1.noOfUnits.value=""
+	   document.F1.noOfUnits.focus()
 	   return false
    }
-    if(isNaN(document.F1.amount.value))
-   {
-       alert("tax field must  be  number & can't be null")
-	   document.F1.amount.value=""
-	   document.F1.amount.focus()
-	   return false
-   }
-   
+
    
 
    return true   
@@ -99,17 +60,73 @@ function dil(form)
         </ul>	
     </div>
 </div>
+<table width="960" border="0" cellspacing="10" cellpadding="0"
+		align="center">
+		<%
+			
+		%>
+
+
+		<tr align="justify">
+			<td valign="top">
+				<%-- <table cellspacing="10" cellpadding="8">	--%> <%
+ 	
+ %>
+				<table>
+					<%
+						//out.print("<td><tr><a href='disselectord.jsp'>Click to select your order</a></tr></td>");
+
+					try {
+						Connection con = GetCon.getCon();
+						PreparedStatement ps = con.prepareStatement("Select * from DISTRIBUTERPROD");
+						//ps.setString(1,uname);
+						ResultSet rs = ps.executeQuery();
+
+						//out.print("<td><a href='disselectord.jsp'>Click to select your order</a></td>");
+
+						out.print(
+						"<tr><th>id</th><th>prodcode</th><th>productname</th><th>Manufacturing Date</th><th>Manufacture detail</th><th>Expiry</th><th>Minq</th><th>Totalq</th><th>cost/prod</th><th>Username</th></tr>");
+						while (rs.next()) {
+							int id = rs.getInt(1);
+							session.setAttribute("id", id);
+							out.print("<tr>");
+							out.print("<td>" + rs.getString(1) + "</td>");
+							out.print("<td>" + rs.getString(2) + "</td>");
+							out.print("<td>" + rs.getString(3) + "</td>");
+							out.print("<td>" + rs.getString(4) + "</td>");
+							out.print("<td>" + rs.getString(5) + "</td>");
+							out.print("<td>" + rs.getString(6) + "</td>");
+							out.print("<td>" + rs.getDouble(7) + "</td>");
+							out.print("<td>" + rs.getDouble(8) + "</td>");
+							out.print("<td>" + rs.getDouble(9) + "</td>");
+							out.print("<td>" + rs.getString(10) + "</td>");
+
+							//out.print("<td>" DeleteServlet.Del`"</td>");
+
+							out.print("</tr>");
+						}
+
+						//out.print("</table>");
+						//out.print("<table>");
+
+						//out.print("</table>");
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					%>
+				</table>
+				<%
+					
+				%> <%@ page import="java.sql.*"%> <%@ page
+					import="java.io.*"%> <%@ page
+					import="javax.servlet.*"%> <%@ page
+					import="com.kingbomm.*"%>
 
 <table width="960" border="0" cellspacing="10" cellpadding="0" align="center">
   <tr align="justify">
-    <td valign="top" width="220px">
-    	<img src="images/hioxindia-pharmacy_08.jpg" alt="" border="0" /> <br /> 
-      <h1>Pharmaceutist</h1>
-      	<p>Freedesignertemplates.com has a wide collection of HTML web design templates.</p>
-    	<p align="right"><a href="#" class="more">View More</a></p>
-    </td> <td valign="top">
+     <td valign="top">
 			
-				<form name=F1 onSubmit="return dil(this)" action="orderdetail.jsp" >
+				<form name=F1 onSubmit="return dil(this)" action="orderDetails.jsp" >
 				  <table cellspacing="5" cellpadding="3">	
 				  <TR>
 	<TD> Product Code : </TD> <TD> <SELECT NAME="ProdCode"> 
@@ -126,14 +143,9 @@ function dil(form)
 </TR>
 				
 					<tr><td>Product Name :</td><td> <input type="text" name="productname"/></td></tr>
-					<tr><td>Tax :</td><td> <input type="text" name="tax"/></td></tr>
-					<tr><td>Min Qty to Order :	</td><td> <input type="text" name="minq"/></td></tr>
-					<tr><td>Ordering Qty :</td><td> <input type="text" name="orderq"/></td></tr>
+					<tr><td>No Of Units :</td><td> <input type="number" name="noOfUnits"/></td></tr>
+					<tr><td>Prefered Distributor :	</td><td> <input type="text" name="preferedDistributor"/></td></tr>
 					
-					
-					<tr><td>Discount :</td><td> <input type="text" name="discount"/></td></tr>
-					<tr><td>Net cost:</td><td> <input type="text" name="netcost"/></td></tr>
-					<tr><td>Ammount:</td><td> <input type="text" name="amount"/></td></tr>
 					
 <TR><TD>  ModeofPayment: </TD> 
 	
@@ -143,29 +155,16 @@ function dil(form)
  
 			<TD> Check  <INPUT TYPE="radio" NAME="r1" VALUE="check"></TD>
 </TR>
+
 	
 					<tr><td></td><td><input type="submit" value="Submit"/>
 					
 					<INPUT TYPE=RESET VALUE="CLEAR"></td></tr>
 					</table>
                		</form>
-				
-    	
-    <td valign="top">
-    	<img src="images/hioxindia-pharmacy_10.jpg" alt="" border="0" />
-        <h1>Drug Store</h1>
-      <p>Anyone can use these HTML templates just by replacing the content to the pre-existing site designs.</p>
-        <p align="right"><a href="#" class="more">View More</a></p>
-    </td>
-    <td valign="top">
-    	<img src="images/hioxindia-pharmacy_12.jpg" alt="" border="0" />
-        <h1>Tablets</h1>
-      <p>This high quality free pharmaceutical company template is built using XHTML and CSS..</p>
-        <p align="right"><a href="#" class="more">View More</a></p>
-    </td>
     
   </tr>
-  <tr><td colspan="4" style="border-bottom:1px solid #CCCCCC;"></td></tr>
+
 </table>
 
 
