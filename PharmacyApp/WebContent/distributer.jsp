@@ -99,9 +99,12 @@ var sds = document.getElementById("dum");
 		if(status==true){
 			out.print("Welcome    " + username);
 		
-			out.println("<br><br><a href='distributerorder.jsp'>Click to see orders</a> " );
+			out.println("<br><br><a href='distributorUserName.jsp'>Click to see orders</a> " );
 			out.println("<br><br><a href='distributerproduct.jsp'>Click to add Products</a> " );
 			out.println("<br><br><a href='getusername.jsp'>Click to See ur Products</a> " );
+			//out.println("<br><br><a href='getusername.jsp'>Click to See ur Orders</a> " );
+
+			
 			
 
 			Connection con=GetCon.getCon();

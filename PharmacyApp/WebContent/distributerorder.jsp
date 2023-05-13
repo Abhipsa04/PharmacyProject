@@ -103,29 +103,30 @@ var sds = document.getElementById("dum");
     	<% 
 %>
 <table><%
-    out.print("<td><tr><a href='disselectord.jsp'>Click to select your order</a></tr></td>");
+    //out.print("<td><tr><a href='disselectord.jsp'>Click to select your order</a></tr></td>");
+	String userName=request.getParameter("username");
+	//System.out.println(userName);
        
       	try {
 			Connection con=GetCon.getCon();
-			PreparedStatement ps=con.prepareStatement("Select * from neworder4");
-			//ps.setString(1,uname);
+			PreparedStatement ps=con.prepareStatement("select * from custorder where DISTRIBUTOR_NAME=?");
+			//ps.setString(1,username);
+			ps.setString(1,userName);
 			ResultSet rs=ps.executeQuery();
 						
 			//out.print("<td><a href='disselectord.jsp'>Click to select your order</a></td>");
 			
-				out.print("<tr><th>id</th><th>prodcode</th><th>productname</th><th>minquantity</th><th>orderqueue</th><th>Netcost</th><th>Amount</th></tr>");
+				out.print("<tr><th>Product Id</th><th>Product Name</th><th>No_Of_Units</th><th>Mode Of Payment</th><th>UserName</th><th>Status</th></tr>");
 			while(rs.next()){
-				int id=rs.getInt(1);
-			    session.setAttribute("id",id);			
+				//int id=rs.getInt(1);
+			    //session.setAttribute("id",id);			
 				out.print("<tr>");
 				out.print("<td>" + rs.getString(1) + "</td>");
 				out.print("<td>" + rs.getString(2) + "</td>");
-				out.print("<td>" + rs.getString(3) + "</td>");
+				out.print("<td>" + rs.getDouble(3) + "</td>");
 				out.print("<td>" + rs.getString(5) + "</td>");
 				out.print("<td>" + rs.getString(6) + "</td>");
-				//out.print("<td>" + rs.getString(7) + "</td>");
-				out.print("<td>" + rs.getString(8) + "</td>");
-				out.print("<td>" + rs.getString(9) + "</td>");
+				out.print("<td>" + rs.getString(7) + "</td>");
 				
 				//out.print("<td>" DeleteServlet.Del`"</td>");
 				

@@ -102,6 +102,7 @@ var sds = document.getElementById("dum");
 			out.println("<br><a href='productslist.jsp'> Go To see all products </a><br>");
 			out.println("<br><a href='adminAllOrders.jsp'> Go To see all orders </a><br>");
 			out.println("<br><a href='adminPendingOrders.jsp'> Go To see pending orders </a><br>");
+			out.println("<br><a href='adminConfirmedOrders.jsp'> Go To see confirmed orders </a><br>");
 			out.println("<br><a href='adminDeliveredOrders.jsp'> Go To see delivered orders </a><br>");
 
 

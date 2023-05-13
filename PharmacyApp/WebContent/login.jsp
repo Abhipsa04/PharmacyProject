@@ -96,7 +96,8 @@ var sds = document.getElementById("dum");
 		if(status==true){
 			out.print("Welcome    " + username);
 		
-			out.println("<br><a href='order.jsp'>Click to place an order</a> " );
+			out.println("<br><a href='order.jsp'>Click to place an order</a><br> " );
+			out.println("<br><a href='getUserNameCustomer.jsp'>Click to see your orders</a> " );
 		   
 		    
 			Connection con=GetCon.getCon();

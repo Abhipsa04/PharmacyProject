@@ -138,6 +138,9 @@ function dil(form)
 					}
 					%>
 				</table>
+				
+				<a href="deleteDeliveredOrder.jsp">Click to Clear</a>
+				
 				<%
 					
 				%> <%@ page import="java.sql.*"%> <%@ page

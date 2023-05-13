@@ -104,29 +104,16 @@ function dil(form)
 					try {
 						
 						Connection con = GetCon.getCon();
-						PreparedStatement ps = con.prepareStatement("Select * from CUSTORDER where STATUS='pending'");
+						PreparedStatement ps = con.prepareStatement("DELETE from CUSTORDER where STATUS='delivered'");
 						
 						ResultSet rs = ps.executeQuery();
 
 						//out.print("<td><a href='disselectord.jsp'>Click to select your order</a></td>");
 
-						out.print(
-								"<tr><th>prodcode</th><th>productname</th><th>No of Units</th><th>Distributor</th><th>Mode of Payment</th><th>username<th>Status</th></tr>");
 						while (rs.next()) {
 							
-							out.print("<tr>");
-							out.print("<td>" + rs.getString(1) + "</td>");
-							out.print("<td>" + rs.getString(2) + "</td>");
-							out.print("<td>" + rs.getDouble(3) + "</td>");
-							out.print("<td>" + rs.getString(4) + "</td>");
-							out.print("<td>" + rs.getString(5) + "</td>");
-							out.print("<td>" + rs.getString(6) + "</td>");
-							out.print("<td>" + rs.getString(7) + "</td>");
 							
-
-							//out.print("<td>" DeleteServlet.Del`"</td>");
-
-							out.print("</tr>");
+							out.print("<h1>Orders have been cleared</h1>");
 						}
 
 						//out.print("</table>");
@@ -138,7 +125,8 @@ function dil(form)
 					}
 					%>
 				</table>
-				<button><a href="updateAdminPendingOrder.jsp">Click to update</a></button>
+				
+				
 				<%
 					
 				%> <%@ page import="java.sql.*"%> <%@ page

@@ -104,7 +104,7 @@ function dil(form)
 					try {
 						
 						Connection con = GetCon.getCon();
-						PreparedStatement ps = con.prepareStatement("Select * from CUSTORDER where STATUS='pending'");
+						PreparedStatement ps = con.prepareStatement("Select * from CUSTORDER where STATUS='confirmed'");
 						
 						ResultSet rs = ps.executeQuery();
 
@@ -138,7 +138,6 @@ function dil(form)
 					}
 					%>
 				</table>
-				<button><a href="updateAdminPendingOrder.jsp">Click to update</a></button>
 				<%
 					
 				%> <%@ page import="java.sql.*"%> <%@ page
