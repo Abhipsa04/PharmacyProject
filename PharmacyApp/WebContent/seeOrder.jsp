@@ -15,43 +15,49 @@
 </script>
 <head>
 <SCRIPT LANGUAGE="JavaScript">
-function dil(form)
-{
-   for(var i=0; i<form.elements.length; i++)
-   {
-		if(form.elements[i].value == "")
-		{
-		   alert("Fill out all Fields")
-		   document.F1.productname.focus()
-		   return false
+	function dil(form) {
+		for (var i = 0; i < form.elements.length; i++) {
+			if (form.elements[i].value == "") {
+				alert("Fill out all Fields")
+				document.F1.productname.focus()
+				return false
+			}
 		}
-   }
- if(!isNaN(document.F1.productname.value))
-   {
-       alert("productname  must  be  char's & can't be null")
-	   document.F1.productname.value=""
-	   document.F1.productname.focus()
-	   return false
-   }
+		if (!isNaN(document.F1.productname.value)) {
+			alert("productname  must  be  char's & can't be null")
+			document.F1.productname.value = ""
+			document.F1.productname.focus()
+			return false
+		}
 
-    if(isNaN(document.F1.noOfUnits.value))
-   {
-       alert("Netcost field must  be  number & can't be null")
-	   document.F1.noOfUnits.value=""
-	   document.F1.noOfUnits.focus()
-	   return false
-   }
-    if(!isNaN(document.F1.username.value))
-    {
-        alert("productname  must  be  char's & can't be null")
- 	   document.F1.username.value=""
- 	   document.F1.username.focus()
- 	   return false
-    }
-   
+		if (isNaN(document.F1.minq.value)) {
+			alert("min quanty of order field must  be  number & can't be null")
+			document.F1.minq.value = ""
+			document.F1.minq.focus()
+			return false
+		}
+		if (isNaN(document.F1.orderq.value)) {
+			alert("Ordering Qty field must  be  number & can't be null")
+			document.F1.orderq.value = ""
+			document.F1.orderq.focus()
+			return false
+		}
 
-   return true   
-   }
+		if (isNaN(document.F1.netcost.value)) {
+			alert("Netcost field must  be  number & can't be null")
+			document.F1.netcost.value = ""
+			document.F1.netcost.focus()
+			return false
+		}
+		if (!isNaN(document.F1.usname.value)) {
+			alert("username field must  be character & can't be null")
+			document.F1.usname.value = ""
+			document.F1.usname.focus()
+			return false
+		}
+
+		return true
+	}
 </SCRIPT>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Global Banking ..</title>
@@ -84,15 +90,13 @@ function dil(form)
 
 
 		<tr align="justify">
-		    <td valign="top" width="220px">
+
+    <td valign="top" width="220px">
     	<img src="images/hioxindia-pharmacy_08.jpg" alt="" border="0" /> <br /> 
       <h1>Tele-Consultancy</h1>
       	<p>Book a call for tele-consultancy now.(Coming up)</p>
     	<p align="right"><a href="#" class="more">View More</a></p>
     </td>
-
-    <td valign="top" width="220px">
- 
 			<td valign="top">
 				<%-- <table cellspacing="10" cellpadding="8">	--%> <%
  	
@@ -102,28 +106,26 @@ function dil(form)
 						//out.print("<td><tr><a href='disselectord.jsp'>Click to select your order</a></tr></td>");
 
 					try {
-						
+						String username=request.getParameter("usname");
 						Connection con = GetCon.getCon();
-						PreparedStatement ps = con.prepareStatement("Select * from CUSTORDER where STATUS='pending'");
-						
+						PreparedStatement ps = con.prepareStatement("Select * from CUSTORDER where USERNAME=?");
+						ps.setString(1,username);
 						ResultSet rs = ps.executeQuery();
 
 						//out.print("<td><a href='disselectord.jsp'>Click to select your order</a></td>");
 
 						out.print(
-								"<tr><th>prodcode</th><th>productname</th><th>No of Units</th><th>Distributor</th><th>Mode of Payment</th><th>username<th>Status</th></tr>");
+						"<tr><th>Product Id</th><th>Product Name</th><th>No of Units</th><th>Distributor Name</th><th>Mode Of Payment<th>Status</th>");
 						while (rs.next()) {
-							
+							//int id = rs.getInt(1);
+							//session.setAttribute("id", id);
 							out.print("<tr>");
 							out.print("<td>" + rs.getString(1) + "</td>");
 							out.print("<td>" + rs.getString(2) + "</td>");
 							out.print("<td>" + rs.getDouble(3) + "</td>");
 							out.print("<td>" + rs.getString(4) + "</td>");
 							out.print("<td>" + rs.getString(5) + "</td>");
-							out.print("<td>" + rs.getString(6) + "</td>");
 							out.print("<td>" + rs.getString(7) + "</td>");
-							
-
 							//out.print("<td>" DeleteServlet.Del`"</td>");
 
 							out.print("</tr>");
@@ -138,58 +140,6 @@ function dil(form)
 					}
 					%>
 				</table>
-				
-			
-				
-<table width="960" border="0" cellspacing="10" cellpadding="0" align="center">
-  <tr align="justify">
-     <td valign="top">
-			
-				<form name=F1 onSubmit="return dil(this)" action="updateAdminPendingOrder.jsp" >
-				  <table cellspacing="5" cellpadding="3">	
-				  <TR>
-	<TD> Product Code : </TD> <TD> <SELECT NAME="ProdCode"> 
-									<option value=a1> APLG0001
-									<option value=a2> APLG0002
-									<option value=a3> APLG0003
-									<option value=a4> APLG0004
-									<option value=a5> APLG0005
-
-									
-									</SELECT> 
-							  </TD>
-	
-</TR>
-				
-					<tr><td>Product Name :</td><td> <input type="text" name="productname"/></td></tr>
-					<tr><td>No Of Units :</td><td> <input type="number" name="noOfUnits"/></td></tr>
-					<tr><td>Prefered Distributor :	</td><td> <input type="text" name="preferedDistributor"/></td></tr>
-					<tr><td>Available Distributor :	</td><td> <input type="text" name="newDistributor"/></td></tr>
-					<tr><td>Username : </td><td> <input type="text" name="username"/></td></tr>
-					
-					
-<TR><TD>  ModeofPayment: </TD> 
-	
-			<TD> Cash  <INPUT TYPE="radio" NAME="r1" VALUE="cash"></TD>  			
-	
-			<TD> D.D   <INPUT TYPE="radio" NAME="r1" VALUE="DD"></TD>
- 
-			<TD> Check  <INPUT TYPE="radio" NAME="r1" VALUE="check"></TD>
-</TR>
-
-	
-					<tr><td></td><td><input type="submit" value="Click to Update"/>
-					
-					<INPUT TYPE=RESET VALUE="CLEAR"></td></tr>
-					
-					</table>
-               		</form>
-    
-  </tr>
-
-</table>
-				
-				
 				<%
 					
 				%> <%@ page import="java.sql.*"%> <%@ page

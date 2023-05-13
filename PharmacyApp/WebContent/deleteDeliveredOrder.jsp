@@ -91,7 +91,7 @@ function dil(form)
     	<p align="right"><a href="#" class="more">View More</a></p>
     </td>
 
-    <td valign="top" width="220px">
+    
  
 			<td valign="top">
 				<%-- <table cellspacing="10" cellpadding="8">	--%> <%
@@ -113,8 +113,8 @@ function dil(form)
 						while (rs.next()) {
 							
 							
-							out.print("<h1>Orders have been cleared</h1>");
-						}
+							
+						}out.print("<tr>Orders have been cleared</tr>");
 
 						//out.print("</table>");
 						//out.print("<table>");

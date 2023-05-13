@@ -102,17 +102,21 @@ var sds = document.getElementById("dum");
 	
     	<% 
 %>
-<table><%
+<table><h1>All Orders Confirmed</h1><%
     //out.print("<td><tr><a href='disselectord.jsp'>Click to select your order</a></tr></td>");
 	String userName=request.getParameter("username");
 	//System.out.println(userName);
        
       	try {
 			Connection con=GetCon.getCon();
-			PreparedStatement ps=con.prepareStatement("select * from custorder where DISTRIBUTOR_NAME=? and status='pending'");
+			PreparedStatement ps=con.prepareStatement("update custorder set status='confirmed' where DISTRIBUTOR_NAME=? and status='pending'");
 			//ps.setString(1,username);
 			ps.setString(1,userName);
-			ResultSet rs=ps.executeQuery();
+			int count=ps.executeUpdate();
+			 PreparedStatement ps1=con.prepareStatement("select * from custorder where DISTRIBUTOR_NAME=? and status='confirmed' ");
+			//ps.setString(1,username);
+			ps1.setString(1,userName);
+			ResultSet rs=ps1.executeQuery();
 						
 			//out.print("<td><a href='disselectord.jsp'>Click to select your order</a></td>");
 			
@@ -133,7 +137,7 @@ var sds = document.getElementById("dum");
 			
 				out.print("</tr>");
 			}
-
+			
 			//out.print("</table>");
 			//out.print("<table>");
 			
@@ -141,13 +145,10 @@ var sds = document.getElementById("dum");
 			} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+      	
+      	//out.println("<tr <a href='ConfirmedOrder.jsp'>CLick here to confirm your orders</a></tr>");
 	
-		%></table>
-		      	 <a href='DistributorUserName1.jsp'>CLick here to confirm your orders</a><br><br>
-		      	 <a href='DistributorUserName2.jsp'>CLick here to mark your confirmed orders as delivered</a>
-		      	 
-		<%
+		%></table><%
 %>
 
 <%@ page import="java.sql.*"%>

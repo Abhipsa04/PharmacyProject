@@ -15,6 +15,8 @@ if(sds == null){alert("You are using a free package.\n You are not allowed to re
 }
 </script>
 
+
+<head>
 <SCRIPT LANGUAGE="JavaScript">
 function dil(form)
 {
@@ -23,95 +25,141 @@ function dil(form)
 		if(form.elements[i].value == "")
 		{
 		   alert("Fill out all Fields")
-		   document.F1.username.focus()
+		   document.F1.productname.focus()
 		   return false
 		}
    }
-
-  
-   if(!isNaN(document.F1.username.value))
+ if(!isNaN(document.F1.productname.value))
    {
-       alert("User Name  must  be  char's & can't be null")
-	   document.F1.username.value=""
-	   document.F1.username.focus()
+       alert("productname  must  be  char's & can't be null")
+	   document.F1.productname.value=""
+	   document.F1.productname.focus()
 	   return false
    }
 
-   if(!isNaN(document.F1.password.value))
+    if(isNaN(document.F1.noOfUnits.value))
    {
-       alert("Password  must  be  char's & can't be null")
-	   document.F1.password.value=""
-	   document.F1.password.focus()
+       alert("Netcost field must  be  number & can't be null")
+	   document.F1.noOfUnits.value=""
+	   document.F1.noOfUnits.focus()
 	   return false
    }
+    if(!isNaN(document.F1.username.value))
+    {
+        alert("productname  must  be  char's & can't be null")
+ 	   document.F1.username.value=""
+ 	   document.F1.username.focus()
+ 	   return false
+    }
    
-   return true   
-}
-</SCRIPT>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Global Banking ..</title>
-<link href="style.css" rel="stylesheet" type="text/css">
-<script type="text/javascript">
-function ctck()
-{
-var sds = document.getElementById("dum");
 
-}
-</script>
-<body>
+   return true   
+   }
+</SCRIPT>
 <div id="header">
 	<div id="navigation">
     	<ul>
         	<li><a href="index.jsp">Home</a></li>
             <li><a href="about.jsp">About Us</a></li>
             <li><a href="admin.jsp">ADMINISTRATOR </a></li>
-            <li><a href="distributer.jsp">DISTRIBUTER </a></li>
             <li><a href="customer.jsp">CUST0MER</a></li>
             <li><a href="contactus.jsp">Contact Us</a></li>
         </ul>	
     </div>
 </div>
 
-<table width="960" border="0" cellspacing="10" cellpadding="0" align="center">
+ <table width="960" border="0" cellspacing="10" cellpadding="0" align="center">
   <tr align="justify">
-    <td valign="top" width="220px">
+     <td valign="top" width="220px">
     	<img src="images/hioxindia-pharmacy_08.jpg" alt="" border="0" /> <br /> 
       <h1>Tele-Consultancy</h1>
       	<p>Book a call for tele-consultancy now.(Coming up)</p>
     	<p align="right"><a href="#" class="more">View More</a></p>
     </td> <td valign="top">
-   			   
-				  <%  out.print("<font color=red>WELCOME TO DISTRIBUTER LOGIN");
-	%>
-    
-    	<form name=F1 onSubmit="return dil(this)" action="distributer.jsp" >
-				   <table cellspacing="10" cellpadding="8">	
-				  <%if(request.getAttribute("distributer")!=null)
-			{
-			out.print("<div>");
-			out.print("<font color='blue'><font size='4'>"+request.getAttribute("distributer"));
+    	
+				
+    	<% 
+%>
+<table width="300" border="0" cellspacing="10" cellpadding="0" align="center"><%
+        
+        String ProdCode=request.getParameter("ProdCode");
+        String productname=request.getParameter("productname");
+
+   
+        
+        String unit=request.getParameter("noOfUnits");
+        System.out.println(unit);
+        double unitno=Double.parseDouble(unit);
+
+        String distributor = request.getParameter("preferedDistributor");
+        String newDistributor = request.getParameter("newDistributor");
+        String mode = request.getParameter("r1");
+        String username = request.getParameter("username");
+        //session.setAttribute("uname",username);
+		//String choice = request.getParameter("c");
+		String status = "pending";
+		
+        
+
+	    
+		
+	    
+		try 
+		{
+		    Connection con=GetCon.getCon();
+			PreparedStatement ps=con.prepareStatement("UPDATE CUSTORDER SET PRODUCT_ID = ?, PRODUCT_NAME = ?, NO_OF_UNITS = ?, DISTRIBUTOR_NAME = ?, MODE_OF_PAYMENT = ?, USERNAME = ?, STATUS = ? WHERE DISTRIBUTOR_NAME = 'NA'");
+
+		
+	 	             // ps.setInt(1,8);
+           			ps.setString(1,ProdCode);
+           			ps.setString(2,productname);
+           			ps.setDouble(3,unitno);
+           			ps.setString(4,newDistributor);
+           			ps.setString(5,mode);
+           			ps.setString(6,username);
+           			ps.setString(7,status);
+ 
+           			ResultSet rs=ps.executeQuery();
+           			//out.print("<tr>your Item has been Added </tr>");
+           			
+        			
+           		    
+           			if(rs.next()){
+           				
+			out.print(" Order has been Updated");
+			//out.println("<br><a href='distributer.jsp'> Go To add products </a><br>");
+
 			
-			out.print("</div>"); 
+			%>
+			</table>	
+			
+			
+			<% 
+				
 			}
+           			
+		   else{
+		  
+			out.print("sorry try later");
 			
-			 %>
-				 
-	    			<tr><td>LOGIN NAME:</td><td> <input type="text" name="username"/></td></tr>
-					
-					<tr><td>PASSWORD:</td><td> <input type="password" name="password"/></td></tr>
-					
-					<tr><td></td><td><input type="submit" value="Submit"/>
-					
-                   
-                   <INPUT TYPE=RESET VALUE="CLEAR"></td></tr>
-                   
-                   
-             	</table>
-             	                   <h1>To Register contact us at Justmedi2223@gmail.com</h1>
-             	
-				</form>
-  		
+			%>
+			<jsp:forward page="index.php"></jsp:forward> 
+			<% 
 			
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+		%></table><%
+%>
+
+<%@ page import="java.sql.*"%>
+<%@ page import="java.io.*" %>
+<%@ page import="javax.servlet.*"%>
+<%@ page import="com.kingbomm.*" %>
+  
+						
 		
     <td valign="top">
     	<img src="images/hioxindia-pharmacy_10.jpg" alt="" border="0" />
@@ -162,4 +210,3 @@ var sds = document.getElementById("dum");
 </div>
 </body>
 </html>
-
