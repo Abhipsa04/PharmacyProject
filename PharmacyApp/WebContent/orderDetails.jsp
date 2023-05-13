@@ -37,37 +37,20 @@ function dil(form)
 	   return false
    }
 
-  
-    if(isNaN(document.F1.minq.value))
-   {
-       alert("min quanty of order field must  be  number & can't be null")
-	   document.F1.minq.value=""
-	   document.F1.minq.focus()
-	   return false
-   }
-    if(isNaN(document.F1.orderq.value))
-   {
-       alert("Ordering Qty field must  be  number & can't be null")
-	   document.F1.orderq.value=""
-	   document.F1.orderq.focus()
-	   return false
-   }
-
-    if(isNaN(document.F1.netcost.value))
+    if(isNaN(document.F1.noOfUnits.value))
    {
        alert("Netcost field must  be  number & can't be null")
-	   document.F1.netcost.value=""
-	   document.F1.netcost.focus()
+	   document.F1.noOfUnits.value=""
+	   document.F1.noOfUnits.focus()
 	   return false
    }
-    if(!isNaN(document.F1.usname.value))
-   {
-       alert("username field must  be character & can't be null")
-	   document.F1.usname.value=""
-	   document.F1.usname.focus()
-	   return false
-   }
-   
+    if(!isNaN(document.F1.username.value))
+    {
+        alert("productname  must  be  char's & can't be null")
+ 	   document.F1.username.value=""
+ 	   document.F1.username.focus()
+ 	   return false
+    }
    
 
    return true   
@@ -109,8 +92,10 @@ function dil(form)
 
         String distributor = request.getParameter("preferedDistributor");
         String mode = request.getParameter("r1");
-        
+        String username = request.getParameter("username");
+        session.setAttribute("uname",username);
 		//String choice = request.getParameter("c");
+		String status = "pending";
 		
         
 
@@ -120,16 +105,17 @@ function dil(form)
 		try 
 		{
 		    Connection con=GetCon.getCon();
-			PreparedStatement ps=con.prepareStatement("insert into CUSTORDER values(?,?,?,?,?,?)");
-	         int nextvalue=GetCon.getPrimaryKey();
-	             ps.setInt(1,nextvalue);
+			PreparedStatement ps=con.prepareStatement("insert into CUSTORDER values(?,?,?,?,?,?,?)");
+
 		
-	 	           // ps.setInt(1,8);
-           			ps.setString(2,ProdCode);
-           			ps.setString(3,productname);
-           			ps.setDouble(4,unitno);
-           			ps.setString(5,distributor);
-           			ps.setString(6,mode);
+	 	             // ps.setInt(1,8);
+           			ps.setString(1,ProdCode);
+           			ps.setString(2,productname);
+           			ps.setDouble(3,unitno);
+           			ps.setString(4,distributor);
+           			ps.setString(5,mode);
+           			ps.setString(6,username);
+           			ps.setString(7,status);
  
            			ResultSet rs=ps.executeQuery();
            			//out.print("<tr>your Item has been Added </tr>");

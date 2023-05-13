@@ -43,7 +43,13 @@ function dil(form)
 	   document.F1.noOfUnits.focus()
 	   return false
    }
-
+    if(!isNaN(document.F1.username.value))
+    {
+        alert("productname  must  be  char's & can't be null")
+ 	   document.F1.username.value=""
+ 	   document.F1.username.focus()
+ 	   return false
+    }
    
 
    return true   
@@ -145,6 +151,7 @@ function dil(form)
 					<tr><td>Product Name :</td><td> <input type="text" name="productname"/></td></tr>
 					<tr><td>No Of Units :</td><td> <input type="number" name="noOfUnits"/></td></tr>
 					<tr><td>Prefered Distributor :	</td><td> <input type="text" name="preferedDistributor"/></td></tr>
+					<tr><td>Username : </td><td> <input type="text" name="username"/></td></tr>
 					
 					
 <TR><TD>  ModeofPayment: </TD> 
@@ -157,9 +164,10 @@ function dil(form)
 </TR>
 
 	
-					<tr><td></td><td><input type="submit" value="Submit"/>
+					<tr><td></td><td><input type="submit" value="ADD TO CART"/>
 					
 					<INPUT TYPE=RESET VALUE="CLEAR"></td></tr>
+					<td><a href="getCustomerUsername.jsp">Click To View Orders</a></td>
 					</table>
                		</form>
     
